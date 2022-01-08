@@ -1,0 +1,15 @@
+npx hardhat run scripts/deploy.js --network bscTestnet 
+
+npx hardhat verify --network bscTestnet xACe0A6cc0cf1bb1d891542b618c030FA452f22d3
+# contract address
+
+/*
+Nothing to compile
+Compiling 1 file with 0.8.9
+Successfully submitted source code for contract
+contracts/Transactions.sol:Transactions at 0xACe0A6cc0cf1bb1d891542b618c030FA452f22d3
+for verification on the block explorer. Waiting for verification result...
+
+Successfully verified contract Transactions on Etherscan.
+https://testnet.bscscan.com/address/0xACe0A6cc0cf1bb1d891542b618c030FA452f22d3#code
+*/
